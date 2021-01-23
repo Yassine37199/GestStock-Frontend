@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ProductsListComponent } from './Components/products-list/products-list.component';
 import { AddProductComponent } from './Components/add-product/add-product.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

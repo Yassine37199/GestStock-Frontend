@@ -34,6 +34,12 @@
   .product-form{
     background:#f9feff;
   }
+
+  .product-form h3 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 17px;
+  }
   
   /* FORM STYLES */
   .product-form form{

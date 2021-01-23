@@ -3,6 +3,7 @@
         <div class="wrapper animated bounceInLeft">
           
           <div class="product-form">
+            <h3> ADD A PRODUCT</h3>
             <form [formGroup]="CategoryForm" (ngSubmit)="onSubmit()">
               <p>
                 <label>Product Name</label>
@@ -11,7 +12,7 @@
               <p>
                 <label>Product Brand</label>
                 <input type="text" name="brand" formControlName="brand">
-              </p>
+              </p> 
               <p>
                 <label>Product Code</label>
                 <input type="text" name="code" formControlName="code">
@@ -22,6 +23,21 @@
                       <optGroup label="Maquillage">
                         <option *ngFor="let maq of Maquillage" [ngValue]="maq.category">
                             {{maq.name}}
+                        </option>
+                      </optGroup>
+                      <optGroup label="Parfums">
+                        <option *ngFor="let p of Parfums" [ngValue]="p.category">
+                            {{p.name}}
+                        </option>
+                      </optGroup>
+                      <optGroup label="Produits Cosmétiques">
+                        <option *ngFor="let pc of ProduitCosmetiques" [ngValue]="pc.category">
+                            {{pc.name}}
+                        </option>
+                      </optGroup>
+                      <optGroup label="Produits d'hygiène">
+                        <option *ngFor="let ph of ProduitHygiene" [ngValue]="ph.category">
+                            {{ph.name}}
                         </option>
                       </optGroup>
                     </select>

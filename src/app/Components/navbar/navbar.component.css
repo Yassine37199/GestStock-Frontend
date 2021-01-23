@@ -3,7 +3,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
-    background-color: #798AA5;
+    background-color: #56657c;
 }
 
 .logo {
@@ -53,13 +53,15 @@ nav {
         right: 0px;
         height: 92vh; 
         top: 5vh;
-        background-color: #798AA5;
+        background-color: #56657c;
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 20%;
         transform: translateX(100%);
         transition: transform 0.5s ease-in;
+        z-index: 10;
+        padding-left: 20px;
     }
     .burger{
         display: block;
