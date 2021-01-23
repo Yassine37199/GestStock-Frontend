@@ -11,3 +11,9 @@ body {
     background: #e7e7e7;
     font-family: 'Muli', sans-serif;
 }
+
+@media screen and (max-width : 768px){
+    body{
+        overflow-x: hidden;
+    }
+}

@@ -20,8 +20,8 @@
                   <label>Category</label>
                   <select name="category" formControlName="category">
                       <optGroup label="Maquillage">
-                        <option *ngFor="let cat of categorie" [ngValue]="cat.category">
-                            {{cat.name}}
+                        <option *ngFor="let maq of Maquillage" [ngValue]="maq.category">
+                            {{maq.name}}
                         </option>
                       </optGroup>
                     </select>

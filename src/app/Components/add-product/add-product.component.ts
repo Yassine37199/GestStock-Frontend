@@ -11,19 +11,28 @@ export class AddProductComponent implements OnInit {
   
   CategoryForm : FormGroup;
    
-  categorie:Category[];
-  
+  Parfums:Category[];
+  ProduitHygiene:Category[];
+  ProduitCosmetiques:Category[];
+  Maquillage:Category[];
 
 
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    
-    this.categorie = [
-      {id:1, name:'Vérnie', category:'Maquillage/Vérnie'},
-      {id:2, name:'Mascara', category:'Maquillage/Mascara'}
+
+    this.Maquillage = [
+      {id:1, name:'Fond de teint', category:'Maquillage/font de teint'},
+      {id:2, name:'Mascara', category:'Maquillage/Mascara'},
+      {id:3 ,name:'Rouge à lèvre', category:'Maquillage/Rouge à lèvres'},
+      {id:4 ,name:'Vernis à ongles', category:'Maquillage/Vernis à ongles'}
+
     ];
+
+
+
+
 
     this.initializeForm();
   }
