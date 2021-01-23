@@ -1,0 +1,45 @@
+
+    <div class="container">
+        <div class="wrapper animated bounceInLeft">
+          
+          <div class="product-form">
+            <form [formGroup]="CategoryForm" (ngSubmit)="onSubmit()">
+              <p>
+                <label>Product Name</label>
+                <input type="text" name="name" formControlName="name">
+              </p>
+              <p>
+                <label>Product Brand</label>
+                <input type="text" name="brand" formControlName="brand">
+              </p>
+              <p>
+                <label>Product Code</label>
+                <input type="text" name="code" formControlName="code">
+              </p>
+              <p>
+                  <label>Category</label>
+                  <select name="category" formControlName="category">
+                      <optGroup label="Maquillage">
+                        <option *ngFor="let cat of categorie" [ngValue]="cat.category">
+                            {{cat.name}}
+                        </option>
+                      </optGroup>
+                    </select>
+                </p>
+              <p>
+                <label>Price</label>
+                <input type="number" name="price" formControlName="price">
+              </p>
+  
+              <p>
+                  <label>Quantity</label>
+                  <input type="number" name="qte" formControlName="quantity">
+              </p>
+  
+              <p class="full">
+                <button type="submit" class="btn green">Ajouter</button>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
