@@ -1,93 +1,81 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup , FormBuilder} from '@angular/forms'
+import { Router } from '@angular/router';
 import { Category } from 'src/app/Category';
-import { ProductService } from 'src/app/product.service';
+import { CategoryService } from 'src/app/Services/category.service';
+import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
+
+
 export class AddProductComponent implements OnInit {
   
-  CategoryForm : FormGroup;
+  ProductForm : FormGroup;
+  SelectForm : FormGroup;
+  active : boolean = false;
    
-  Parfums:Category[];
-  ProduitHygiene:Category[];
-  ProduitCosmetiques:Category[];
-  Maquillage:Category[];
+  Categories : any = [];
 
   
 
 
 
 
-  constructor(private fb: FormBuilder , private productservice : ProductService) { }
-
-  ngOnInit(): void {
-
-    
-    this.Maquillage = [
-      { name:'Fond de teint', category:'Maquillage/font de teint'},
-      { name:'Mascara', category:'Maquillage/Mascara'},
-      { name:'Rouge à lèvre', category:'Maquillage/Rouge à lèvres'},
-      { name:'Vernis à ongles', category:'Maquillage/Vernis à ongles'}
-    ];
-
-    this.Parfums = [
-      { name:'Eau de Parfum', category:'Parfums/Eau de Parfum'},
-      { name:'Eau de toilette ', category:'Parfums/Eau de toilette'},
-      { name:'Pack', category:'Parfums/Pack'}
-    ];
-
-    this.ProduitCosmetiques = [
-      { name:'Maquillage', category:'Produit cosmètiques/Maquillage'},
-      { name:'Crème ', category:'Produit cosmètiques/Crème'},
-      { name:'Masque', category:'Produit cosmètiques/Masque'}
-    ];
-
-    this.ProduitHygiene = [
-      { name:'Shampoing', category:'Produit hygiène/Shampoing'},
-      { name:'Aprés Shampoing', category:'Produit hygiène/Aprés Shampoing'},
-      { name:'Déodorant', category:'Produit hygiène/Déodorant'},
-      { name:'Gel douche', category:'Produit hygiène/Gel douche'}
-    ];
-
-
-    
-
-
-
-
-
-
-
+  constructor(private fb: FormBuilder , private productservice : ProductService , private categorieservice : CategoryService , private router : Router) { 
+    this.categorieservice.getCategories().subscribe((res : any) => {
+      this.Categories = res.data;
+      console.log(this.Categories);
+    })
+  
     this.initializeForm();
-    
+
   }
 
+  ngOnInit(): void {
+  }
+
+  
   initializeForm():void{
-    this.CategoryForm = this.fb.group({
+    this.SelectForm = this.fb.group({
+      categorieSelect : ''
+    })
+
+    this.ProductForm = this.fb.group({
       name: '',
-      brand: '',
-      code: '',
-      category: '',
-      price : 0,
-      quantity: 0
+      productCode: '',
+      quantity: 0,
+      price: 0,
+      brand : '',
+      model : '',
+      category : ''
     })
   }
 
   onSubmit():void{
-    this.productservice.AddProduct({
-      name : 'Product Test',
-      productCode : 'dqsfqsfqsfsq',
-      quantity : 100,
-      price : 100,
-      brand : 'brand test',
-      model : 'model test',
-      category_id : ''
-    }).subscribe((r) => {
-      console.log('Produit ajouté avec succée')
-    })  }
+
+    var productName = this.ProductForm.get('name').value;
+    console.log(this.ProductForm.value);
+    
+    const MyForm = JSON.stringify(this.ProductForm.getRawValue());
+    this.productservice.AddProduct(MyForm).subscribe((r) => {
+      alert(`le produit ${productName} est crée avec succée`);
+      this.router.navigate(['']);
+
+    })
+    
+    
+  }
+
+  CatchCategory(){
+    console.log(this.SelectForm.get('categorieSelect').value);
+    this.active = true;
+    this.ProductForm.patchValue({
+        category: this.SelectForm.get('categorieSelect').value
+    })
+  }
 
 }

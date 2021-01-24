@@ -1,8 +1,16 @@
+<div class="form-container">
+<div class="form__group">
+    <input type="text" class="form__input" id="name" placeholder="Search By Brand" required="" />
+    <label for="name" class="form__label">Search By Brand</label>
+  </div>
+</div>
+
+
 <div *ngIf="products.length > 0" class="container">
     <div *ngFor="let product of products" class="product">
         <div class="category">
-            <h6>Catégorie</h6> 
-            <h3>Maquillage</h3>
+            <h6>Category</h6> 
+            <h3>{{product.category}}</h3>
             <a href="#">{{product.productCode}}</a>
         </div>
         <div class="info">
@@ -11,12 +19,12 @@
 
                 </div>
                 <span class="quantity">
-                    {{product.quantity}}
+                    Qte :{{product.quantity}}
                 </span>
                 <h6>{{product.brand}}</h6>
-                <h3>{{product.name}}l</h3>
-                <button class="btn red" (click)="deleteProduct(product._id)">Retirer</button>
-                <button class="btn green">Modifier</button>
+                <h3>{{product.name}}</h3>
+                <button class="btn red" (click)="deleteProduct(product._id)">Delete</button>
+                <button class="btn green" [routerLink]="['/UpdateProduct/' + product._id]">Update</button>
             </div>
         </div>
     </div> 

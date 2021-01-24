@@ -7,6 +7,8 @@ import { ProductsListComponent } from './Components/products-list/products-list.
 import { AddProductComponent } from './Components/add-product/add-product.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
+import { AddCategoryComponent } from './Components/add-category/add-category.component';
+import { UpdateProductComponent } from './Components/update-product/update-product.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import {HttpClientModule} from '@angular/common/http';
     ProductsListComponent,
     AddProductComponent,
     NavbarComponent,
+    AddCategoryComponent,
+    UpdateProductComponent,
 
   ],
   imports: [

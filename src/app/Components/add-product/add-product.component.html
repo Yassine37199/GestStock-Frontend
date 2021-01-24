@@ -1,50 +1,54 @@
-
-    <div class="container">
+<div  class="container">
+  <div class="wrapper animated bounceInLeft">
+    
+    <div class="product-form">
+      <h3> ADD A PRODUCT</h3>
+      <form [formGroup]="SelectForm">
+        <p>
+          <label>Select a Category</label>
+          <select name="categorieSelect" formControlName="categorieSelect">
+            <option *ngFor="let cat of Categories" [ngValue]="cat.name">
+              {{cat.name}}
+          </option>
+          </select>
+        </p> 
+        <p class="full">
+          <button (click)="CatchCategory()" class="btn green">Confirm</button>
+        </p>
+      </form>
+      </div>
+    </div>
+</div>
+      
+          
+    <div  *ngIf="active"  class="container">
         <div class="wrapper animated bounceInLeft">
           
           <div class="product-form">
             <h3> ADD A PRODUCT</h3>
-            <form [formGroup]="CategoryForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="ProductForm" (ngSubmit)="onSubmit()">
               <p>
                 <label>Product Name</label>
-                <input type="text" name="name" formControlName="name">
+                <input type="text" name="name" formControlName="name" placeholder="exemple : Eau de Parfum L'interdit de Gevenchy 100 ml">
               </p>
               <p>
                 <label>Product Brand</label>
-                <input type="text" name="brand" formControlName="brand">
+                <input type="text" name="brand" formControlName="brand" placeholder="exemple : Givenchy">
               </p> 
               <p>
                 <label>Product Code</label>
-                <input type="text" name="code" formControlName="code">
+                <input type="text" name="productCode" formControlName="productCode" placeholder="exemple : 12X6YU19Z">
               </p>
+
               <p>
-                  <label>Category</label>
-                  <select name="category" formControlName="category">
-                      <optGroup label="Maquillage">
-                        <option *ngFor="let maq of Maquillage" [ngValue]="maq.category">
-                            {{maq.name}}
-                        </option>
-                      </optGroup>
-                      <optGroup label="Parfums">
-                        <option *ngFor="let p of Parfums" [ngValue]="p.category">
-                            {{p.name}}
-                        </option>
-                      </optGroup>
-                      <optGroup label="Produits Cosmétiques">
-                        <option *ngFor="let pc of ProduitCosmetiques" [ngValue]="pc.category">
-                            {{pc.name}}
-                        </option>
-                      </optGroup>
-                      <optGroup label="Produits d'hygiène">
-                        <option *ngFor="let ph of ProduitHygiene" [ngValue]="ph.category">
-                            {{ph.name}}
-                        </option>
-                      </optGroup>
-                    </select>
-                </p>
+                <label>Model</label>
+                <input type="text" name="model" formControlName="model" placeholder="exemple : Eau de Parfum , L'interdit , 100ml">
+              </p>
+
+
               <p>
                 <label>Price</label>
-                <input type="number" name="price" formControlName="price">
+                <input type="number" name="price" formControlName="price" placeholder="en TTC">
               </p>
   
               <p>
@@ -53,7 +57,7 @@
               </p>
   
               <p class="full">
-                <button type="submit" class="btn green">Ajouter</button>
+                <button type="submit" class="btn green">Add</button>
               </p>
             </form>
           </div>
