@@ -11,6 +11,9 @@ export class ProductsListComponent implements OnInit {
 
   products : any[];
   filteredProducts : any[];
+  searchName = '';
+  Path = '';
+  NameSearch = '';
  
   
 
@@ -22,6 +25,9 @@ export class ProductsListComponent implements OnInit {
       this.products = res.data;
     })
 
+    this.getCategoryPath();
+
+
   }
 
   deleteProduct(id : string){
@@ -31,16 +37,21 @@ export class ProductsListComponent implements OnInit {
     })
   }
 
-  getCategory(name : string){
-    return this.categoryservice.getCategorieByName(name).subscribe(res => {
-      console.log(res);
-      return res
-    })
+  filterProduct(){
+    this.NameSearch = this.searchName;
+    console.log(this.searchName);
+    console.log(this.NameSearch);   }
+
+  
+  getCategoryPath(){
+      this.categoryservice.getCategorieByName('Mascara').subscribe((res : any) => {
+      this.Path = res.data[0].pathCat;
+      })
+  }
+
+
   }
 
  
 
 
-
-
-}

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Category } from 'src/app/Category';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
@@ -15,13 +14,6 @@ export class UpdateProductComponent implements OnInit {
 
   id : string;
 
-  Parfums:Category[];
-
-  ProduitHygiene:Category[];
-
-  ProduitCosmetiques:Category[];
-
-  Maquillage:Category[];
 
   constructor(private fb : FormBuilder, 
               private actRoute: ActivatedRoute,

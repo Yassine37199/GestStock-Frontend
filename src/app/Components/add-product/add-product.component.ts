@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup , FormBuilder} from '@angular/forms'
 import { Router } from '@angular/router';
-import { Category } from 'src/app/Category';
 import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
 
@@ -17,7 +16,6 @@ export class AddProductComponent implements OnInit {
   ProductForm : FormGroup;
   SelectForm : FormGroup;
   active : boolean = false;
-   
   Categories : any = [];
 
   
@@ -26,6 +24,7 @@ export class AddProductComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder , private productservice : ProductService , private categorieservice : CategoryService , private router : Router) { 
+    // get la liste des categories 
     this.categorieservice.getCategories().subscribe((res : any) => {
       this.Categories = res.data;
       console.log(this.Categories);
@@ -38,7 +37,7 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+
   initializeForm():void{
     this.SelectForm = this.fb.group({
       categorieSelect : ''
@@ -55,8 +54,9 @@ export class AddProductComponent implements OnInit {
     })
   }
 
-  onSubmit():void{
 
+  // ajouter un produit
+  onSubmit():void{
     var productName = this.ProductForm.get('name').value;
     console.log(this.ProductForm.value);
     
@@ -69,7 +69,8 @@ export class AddProductComponent implements OnInit {
     
     
   }
-
+  
+  // lire la categorie à partir de premier formulaire
   CatchCategory(){
     console.log(this.SelectForm.get('categorieSelect').value);
     this.active = true;

@@ -22,11 +22,12 @@ export class AddCategoryComponent implements OnInit {
   initializeForm():void{
     this.CategoryForm = this.fb.group({
       name: '',
-      PathCat : ''
+      pathCat : ''
     })
   }
+ 
 
-
+  // ajouter une categorie
   onSubmit(){
     var categoryName = this.CategoryForm.get('name').value;
     const MyForm = JSON.stringify(this.CategoryForm.getRawValue());

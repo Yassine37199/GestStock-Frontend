@@ -1,13 +1,12 @@
-<div class="form-container">
-<div class="form__group">
-    <input type="text" class="form__input" id="name" placeholder="Search By Brand" required="" />
-    <label for="name" class="form__label">Search By Brand</label>
-  </div>
-</div>
-
 
 <div *ngIf="products.length > 0" class="container">
-    <div *ngFor="let product of products" class="product">
+    <div class="form-container">
+        <div class="form__group">
+            <input type="text" class="form__input" id="name" [(ngModel)]="searchName" (change)="filterProduct()" placeholder="Search By Brand" />
+          </div>
+        </div>
+
+    <div *ngFor="let product of products|filter:NameSearch" class="product">
         <div class="category">
             <h6>Category</h6> 
             <h3>{{product.category}}</h3>
@@ -19,7 +18,7 @@
 
                 </div>
                 <span class="quantity">
-                    Qte :{{product.quantity}}
+                    Qte :{{product.price}}
                 </span>
                 <h6>{{product.brand}}</h6>
                 <h3>{{product.name}}</h3>
